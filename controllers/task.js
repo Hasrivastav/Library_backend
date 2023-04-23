@@ -102,3 +102,28 @@ export const deleteBook = async (req, res, next) => {
     next(error);
   }
 };
+
+export const updateUser = async (req, res, next) => {
+  try {
+    const book = await Books.findById(req.params.id);
+    const { title,author } = req.body;
+
+    // update the fields
+    book.title = title;
+    book.author = author;
+   
+
+    await book.save();
+
+    res.status(200).json({
+      success: true,
+      message: "user Updated!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+    });
+  }
+};

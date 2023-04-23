@@ -3,6 +3,7 @@ import {
   newBook,
  getAllBooks,
   deleteBook,
+  updateUser,
   getBook
 } from "../controllers/task.js";
 
@@ -16,6 +17,6 @@ router.get("/showAll", isAuthenticated, getAllBooks);
 
 router.get("/getbook", isAuthenticated, getBook);
 
-router.route("/:id").delete(isAuthenticated, deleteBook);
+router.route("/:id").delete(isAuthenticated, deleteBook).put(updateUser);
 
 export default router;
