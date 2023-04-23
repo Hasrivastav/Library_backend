@@ -62,10 +62,7 @@ export const getAllBooks = async (req, res, next) => {
   try {
    const tasks = await Books.find();
 
-    res.status(200).json({
-      success: true,
-      tasks,
-    });
+    res.status(200).json(tasks);
   } catch (error) {
     next(error);
   }
